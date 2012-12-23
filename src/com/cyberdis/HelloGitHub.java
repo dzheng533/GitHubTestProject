@@ -21,11 +21,15 @@ public class HelloGitHub {
         try{
         	fr = new FileReader(fileName);
             BufferedReader in = new BufferedReader(fr);
+            StringBuilder sb = new StringBuilder();
             while(in.ready()){
                 String line = in.readLine().trim();
                 if(line.isEmpty())
                 	return;
-                
+                if(line.equals("BEGIN:CARD")){
+                	sb.delete(0, sb.length());
+                }
+                sb.append(line);
             }
         }
         catch(Exception e){
